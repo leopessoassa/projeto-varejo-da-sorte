@@ -14,8 +14,8 @@ function App() {
             <Link className="nav-link" to="/">
               Home
             </Link>
-            <Link className="nav-link" to="/about">
-              About Me
+            <Link className="nav-link" to="/sobre">
+              Sobre
             </Link>
           </Container>
         </Navbar>
@@ -23,7 +23,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
+          <Route path="/sobre" element={<AboutPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Container>
