@@ -1,15 +1,28 @@
+require "cpf_cnpj"
+
 class Api::V1::ClientsController < ApplicationController
   before_action :set_client, only: %i[ show update destroy ]
 
-  # GET /clients
+  # GET /clients?cpf=111.111.111-11
   def index
-    @clients = Client.all
-
-    render json: @clients
+    if params[:cpf].present?
+      if CPF.valid?(params[:cpf])
+        @clients = Client.by_cpf(params[:cpf])
+        if (@clients.length == 0)
+          @client = Client.new(client_params)
+        end
+        render json: @clients
+      else
+        render json: { message: "CPF inválido"}, status: :bad_request
+      end
+    else
+      render json: { message: "CPF é um campo obrigatório"}, status: :bad_request
+    end
   end
 
   # GET /clients/1
   def show
+    Rails.logger.debug("show.params=#{params}")
     render json: @client
   end
 
@@ -42,6 +55,7 @@ class Api::V1::ClientsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_client
       @client = Client.find(params[:id])
+      #@client = Client.find(params[:cpf])
     end
 
     # Only allow a list of trusted parameters through.

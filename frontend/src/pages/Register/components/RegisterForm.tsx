@@ -6,11 +6,11 @@ import { Col, Row } from "react-bootstrap";
 import { ErrorMessage } from "@hookform/error-message";
 import { cpf as cpfValidate } from "cpf-cnpj-validator";
 
-interface IProps {
+interface IRegister {
   onSubmitHandler: (cpf: string) => void;
 }
 
-export const PreRegisterForm = ({ onSubmitHandler }: IProps) => {
+export const RegisterForm = ({ onSubmitHandler }: IRegister) => {
   const {
     register,
     handleSubmit,

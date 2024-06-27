@@ -10,7 +10,7 @@ interface IProps {
   onSubmitHandler: (cpf: string) => void;
 }
 
-export const PreRegisterForm = ({ onSubmitHandler }: IProps) => {
+export const SelectClientForm = ({ onSubmitHandler }: IProps) => {
   const {
     register,
     handleSubmit,
