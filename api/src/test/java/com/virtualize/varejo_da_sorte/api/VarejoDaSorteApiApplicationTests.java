@@ -1,4 +1,4 @@
-package com.virtualize.varejo_da_sorte.api;
+package com.virtualize.varejodasorte.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
